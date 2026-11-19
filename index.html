@@ -117,6 +117,27 @@
   /* ПЛАВАЮЩАЯ КНОПКА */
   .float-call { position:fixed; bottom:20px; right:20px; width:58px; height:58px; border-radius:50%; background:#e6b84a; color:#111; font-size:24px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(0,0,0,.5); z-index:60; }
 
+  /* Работы — адаптив + просмотр на весь экран */
+.works-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.work-item { position: relative; border-radius: 14px; overflow: hidden; cursor: pointer; }
+.work-item img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+.work-item span {
+  position: absolute; left: 10px; bottom: 10px;
+  background: rgba(0,0,0,.65); color: #fff; font-size: 13px;
+  padding: 4px 10px; border-radius: 8px;
+}
+@media (max-width: 640px) {
+  .works-grid { grid-template-columns: 1fr; gap: 14px; }
+  .work-item img { aspect-ratio: 4/3; }
+}
+#lightbox {
+  position: fixed; inset: 0; background: rgba(0,0,0,.93);
+  display: none; align-items: center; justify-content: center;
+  z-index: 999; padding: 16px;
+}
+#lightbox.open { display: flex; }
+#lightbox img { max-width: 100%; max-height: 92vh; object-fit: contain; border-radius: 12px; }
+
   footer { text-align:center; color:#777; font-size:13px; padding:26px 16px 90px; border-top:1px solid #222; }
 </style>
 </head>
@@ -139,6 +160,7 @@
   <h1>IN DETAIL</h1>
   <p>Детейлинг-студия в Казани. Химчистка салона, полировка кузова, керамика и защита — до состояния, которым хочется хвастаться.</p>
   <a class="btn" href="#form">🚗 Записаться</a>
+
 </section>
 
 <section id="services">
@@ -204,12 +226,13 @@
       <div class="work-item"><img src="work4.jpg" alt="Дезинфекция салона" loading="lazy"><span>Дезинфекция салона</span></div>
     </div>
   </div>
+  <div id="lightbox"><img id="lbImg" alt=""></div>
 </section>
 
 
 <section id="reviews">
   <h2>Отзывы клиентов</h2>
-  <p class="sub">Рейтинг 4,8 на Яндекс Картах 🙏</p>
+  <p class="sub">Рейтинг 5.0 🙏</p>
   <div class="reviews">
     <div class="rev"><div class="stars">★★★★★</div>«Салон был в жутком состоянии после двух детей и собаки. Забрал машину — не поверил, что это мой салон. Запах нового авто!»<b>— Дмитрий, Казань</b></div>
     <div class="rev"><div class="stars">★★★★★</div>«Полировал машину перед продажей. Паутинки ушли полностью, блеск как из салона. Продал быстро и дороже, чем планировал.»<b>— Артём, Казань</b></div>
@@ -380,6 +403,15 @@ document.getElementById('tgForm').addEventListener('submit', function(e){
     btn.textContent = '📲 Отправить заявку';
   });
 });
+/* Работы: просмотр фото на весь экран */
+const lb = document.getElementById('lightbox');
+if (lb) {
+  const lbImg = document.getElementById('lbImg');
+  document.querySelectorAll('.work-item img').forEach(img => {
+    img.addEventListener('click', () => { lbImg.src = img.src; lb.classList.add('open'); });
+  });
+  lb.addEventListener('click', () => lb.classList.remove('open'));
+}
 </script>
 </body>
 </html>
