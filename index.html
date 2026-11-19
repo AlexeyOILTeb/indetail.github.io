@@ -400,8 +400,7 @@ document.getElementById('tgForm').addEventListener('submit', async e=>{
   const phone = document.getElementById('fPhone').value;
   const service = document.getElementById('fService').value;
   const car = document.getElementById('fCar').value || '—';
-  const text = `🚗 <b>Новая заявка с сайта IN Detail</b>\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n🔧 Услуга: ${service}\n🚙 Авто: ${car}`;
-  try {
+  const text = `<b>Новая заявка с сайта IN Detail</b><br>Имя: ${name}<br>Телефон: ${phone}<br>Услуга: ${service}<br>Авто: ${car}`;
     const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
