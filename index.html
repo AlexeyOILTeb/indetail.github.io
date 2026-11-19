@@ -392,8 +392,8 @@ document.querySelectorAll('.faq-q').forEach(q=>{
 /* Отправка в Telegram */
 document.getElementById('tgForm').addEventListener('submit', async e=>{
   e.preventDefault();
-  if (BOT_TOKEN === '9037470219:AAFo8nqDJv2WnFjSXwVGsNz2JQcKeo7ct6U' || CHAT_ID === '5397335329') {
-    alert('Сначала впиши BOT_TOKEN и CHAT_ID в код сайта (инструкция была в чате с Алисой).');
+  if (BOT_TOKEN === 'YOUR_BOT_TOKEN' || CHAT_ID === 'YOUR_CHAT_ID') {
+  alert('Сначала впиши BOT_TOKEN и CHAT_ID в код сайта (инструкция была в чате с Алисой).');
     return;
   }
   const name = document.getElementById('fName').value;
