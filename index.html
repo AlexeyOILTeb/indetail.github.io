@@ -147,9 +147,9 @@ footer{background:var(--bg2);padding:26px 0;text-align:center;color:var(--muted)
 
 <!-- Слайдер -->
 <section class="hero" id="top" style="padding:0">
-  <div class="slide active" style="background-image:url('slide1.jpg')"></div>
-  <div class="slide" style="background-image:url('slide2.jpg')"></div>
-  <div class="slide" style="background-image:url('slide3.jpg')"></div>
+  <div class="slide active" style="background-image:url('')"></div>
+  <div class="slide" style="background-image:url('')"></div>
+  <div class="slide" style="background-image:url('')"></div>
   <div class="hero-content">
     <h1>IN <span class="gold">DETAIL</span></h1>
     <p>Детейлинг-студия в Казани. Химчистка салона, полировка кузова, керамика и защита — до состояния, которым хочется хвастаться.</p>
@@ -172,25 +172,25 @@ footer{background:var(--bg2);padding:26px 0;text-align:center;color:var(--muted)
         <div class="ico">🧽</div>
         <h3>Химчистка салона</h3>
         <p>Глубокая химчистка всего салона: сиденья, потолок, пол, торпедо. Убираем пятна, запахи и грязь. Есть дезинфекция и частичная химчистка.</p>
-        <span class="price">от 6 000 ₽</span>
+        <span class="price">от 8 000 ₽</span>
       </div>
       <div class="card">
         <div class="ico">✨</div>
         <h3>Полировка кузова</h3>
         <p>Убираем паутинки, царапины и мелкие дефекты. Кузов получает глубокий блеск и зеркальный вид.</p>
-        <span class="price">от 8 000 ₽</span>
+        <span class="price">от 7 000 ₽</span>
       </div>
       <div class="card">
         <div class="ico">🛡️</div>
         <h3>Керамика / Антидождь</h3>
         <p>Защитное покрытие кузова и стёкол. Блеск, защита от реагентов и грязи, вода скатывается с лобового на скорости.</p>
-        <span class="price">от 10 000 ₽</span>
+        <span class="price">от 5 000 ₽</span>
       </div>
       <div class="card">
         <div class="ico">💨</div>
         <h3>Дезинфекция салона</h3>
         <p>Обработка от бактерий и запахов. Свежий воздух в салоне без химического душка.</p>
-        <span class="price">от 2 000 ₽</span>
+        <span class="price">от 1 000 ₽</span>
       </div>
     </div>
   </div>
@@ -219,7 +219,7 @@ footer{background:var(--bg2);padding:26px 0;text-align:center;color:var(--muted)
     <table>
       <tr><th>Услуга</th><th>Что входит</th><th>Время</th><th>Цена</th></tr>
       <tr><td>🧽 Химчистка салона</td><td>Полная химчистка: сиденья, потолок, пол, торпедо</td><td>6–8 ч</td><td>от 6 000 ₽</td></tr>
-      <tr><td>🫧 Частичная химчистка</td><td>Отдельные элементы: сиденья или пол</td><td>2–4 ч</td><td>от 2 500 ₽</td></tr>
+      <tr><td>🫧 Частичная химчистка</td><td>Отдельные элементы: сиденья или пол и др.</td><td>2–4 ч</td><td>от 2 500 ₽</td></tr>
       <tr><td>💨 Дезинфекция</td><td>Обработка салона от бактерий и запахов</td><td>1–2 ч</td><td>от 2 000 ₽</td></tr>
       <tr><td>✨ Полировка кузова</td><td>Удаление паутинок, глубокий блеск</td><td>5–8 ч</td><td>от 8 000 ₽</td></tr>
       <tr><td>🛡️ Керамика</td><td>Защитное покрытие кузова</td><td>1–2 дня</td><td>от 10 000 ₽</td></tr>
@@ -253,7 +253,6 @@ footer{background:var(--bg2);padding:26px 0;text-align:center;color:var(--muted)
       <img src="work3.jpg" alt="Работа 3">
       <img src="work4.jpg" alt="Работа 4">
       <img src="work5.jpg" alt="Работа 5">
-      <img src="work6.jpg" alt="Работа 6">
     </div>
   </div>
 </section>
@@ -353,8 +352,8 @@ footer{background:var(--bg2);padding:26px 0;text-align:center;color:var(--muted)
 
 <script>
 /* ========== НАСТРОЙ TELEGRAM ЗДЕСЬ ========== */
-const BOT_TOKEN = 'YOUR_BOT_TOKEN'; // токен от @BotFather
-const CHAT_ID   = 'YOUR_CHAT_ID';   // твой ID от @userinfobot
+const BOT_TOKEN = '9037470219:AAFo8nqDJv2WnFjSXwVGsNz2JQcKeo7ct6U'; // токен от @BotFather
+const CHAT_ID   = '5397335329';   // твой ID от @userinfobot
 
 /* Слайдер */
 let cur = 0;
@@ -393,7 +392,7 @@ document.querySelectorAll('.faq-q').forEach(q=>{
 /* Отправка в Telegram */
 document.getElementById('tgForm').addEventListener('submit', async e=>{
   e.preventDefault();
-  if (BOT_TOKEN === 'YOUR_BOT_TOKEN' || CHAT_ID === 'YOUR_CHAT_ID') {
+  if (BOT_TOKEN === '9037470219:AAFo8nqDJv2WnFjSXwVGsNz2JQcKeo7ct6U' || CHAT_ID === '5397335329') {
     alert('Сначала впиши BOT_TOKEN и CHAT_ID в код сайта (инструкция была в чате с Алисой).');
     return;
   }
