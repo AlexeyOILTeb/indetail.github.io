@@ -389,54 +389,50 @@ document.querySelectorAll('.faq-q').forEach(q=>{
   q.addEventListener('click', ()=> q.parentElement.classList.toggle('open'));
 });
 
-/* Отправка в Telegram */
-document.getElementById('tgForm').addEventListener('submit', async e => {
-  e.preventDefault();
+/* ===== Отправка заявки в Telegram — ЗАМЕНИТЬ СТАРЫЙ БЛОК ЦЕЛИКОМ ===== */
+const BOT_TOKEN = 'ВСТАВЬ_СЮДА_ПОЛНЫЙ_ТОКЕН'; // формат: 1234567890:AAbbcc... — целиком, с хвостом
+const CHAT_ID = '5397335329';
 
-  if (BOT_TOKEN === 'YOUR_BOT_TOKEN' || CHAT_ID === 'YOUR_CHAT_ID') {
-    alert('Сначала впиши BOT_TOKEN и CHAT_ID в код сайта (инструкция была в чате с Алисой).');
-    return;
-  }
+document.getElementById('tgForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
 
   const name = document.getElementById('fName').value.trim();
   const phone = document.getElementById('fPhone').value.trim();
-  const service = document.getElementById('fService').value || '-';
-  const car = document.getElementById('fCar').value.trim() || '-';
+  const service = document.getElementById('fService').value;
+  const car = (document.getElementById('fCar').value || '-').trim();
 
   if (!name || !phone) {
-    alert('Заполни имя и телефон.');
+    alert('Заполни имя и номер телефона.');
     return;
   }
 
-  const text = '<b>Новая заявка с сайта IN Detail</b>\n' +
+  const text = 'Новая заявка с сайта IN Detail\n\n' +
     'Имя: ' + name + '\n' +
     'Телефон: ' + phone + '\n' +
     'Услуга: ' + service + '\n' +
     'Авто: ' + car;
 
-  const btn = e.target.querySelector('button[type="submit"]');
-  const btnText = btn ? btn.innerHTML : '';
+  const btn = document.querySelector('#tgForm button[type="submit"]');
   if (btn) { btn.disabled = true; btn.textContent = 'Отправляем...'; }
 
   try {
     const res = await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: CHAT_ID, text: text, parse_mode: 'HTML' })
+      body: JSON.stringify({ chat_id: CHAT_ID, text: text })
     });
     const data = await res.json();
+
     if (data.ok) {
-      alert('Заявка отправлена! Скоро свяжемся с тобой.');
-      e.target.reset();
+      alert('✅ Заявка отправлена! Скоро перезвоню.');
+      document.getElementById('tgForm').reset();
     } else {
-      alert('Telegram вернул ошибку: ' + (data.description || data.error_code));
-      console.error('Telegram API error:', data);
+      alert('Telegram вернул ошибку: ' + (data.description || 'неизвестная ошибка'));
     }
   } catch (err) {
-    console.error('Ошибка отправки:', err);
     alert('Ошибка отправки: ' + err.message);
   } finally {
-    if (btn) { btn.disabled = false; btn.innerHTML = btnText; }
+    if (btn) { btn.disabled = false; btn.textContent = '📲 Отправить заявку'; }
   }
 });
 </script>
